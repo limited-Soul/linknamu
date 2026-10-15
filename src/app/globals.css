@@ -1,11 +1,30 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-geist-sans), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
 }
 
 body {
-  background: #f5f5f4;
-  color: #171717;
+  position: relative;
+  background-color: #fbeee3;
+  color: #2b2420;
   font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+/* 스크롤해도 배경이 고정되도록 별도 레이어로 그린다 (iOS background-attachment 대응) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 45% at 15% 10%, rgba(255, 255, 255, 0.7), transparent 70%),
+    radial-gradient(55% 40% at 90% 85%, rgba(246, 196, 166, 0.45), transparent 70%),
+    linear-gradient(165deg, #fdf8f1 0%, #fbeee3 45%, #f8dcc8 100%);
+}
+
+::selection {
+  background: rgba(232, 160, 120, 0.3);
 }
